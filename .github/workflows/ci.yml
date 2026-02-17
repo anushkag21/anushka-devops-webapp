@@ -15,5 +15,8 @@ jobs:
       - name: Simulate Build
         run: echo "Build completed successfully"
 
-      - name: Simulate Tests
-        run: echo "All tests passed"
+      - name: Slack Notification
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"✅ CI Pipeline executed successfully!"}' \
+          ${{ secrets.SLACK_WEBHOOK }}
